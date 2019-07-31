@@ -35,7 +35,11 @@ def bubble(v):
         if(changed==False):
             break
     return v
-
+   
+print()
+print("Testando com 20 números para ilustrar")
+print("-------------------")
+print()
 k=geraLista(20)
 print(k)
 print(bubble(k))
