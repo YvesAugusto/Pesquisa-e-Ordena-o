@@ -19,6 +19,16 @@ def desenhaGrafico(x,y,y2,xl = "Entradas", yl = "Saídas"):
     plt.ylabel(yl)
     plt.xlabel(xl)
     fig.savefig('graph.png')
+  
+def desenhaGrafico2(x,y,y2,xl = "Entradas", yl = "Saídas"):
+    fig = plt.figure(figsize=(10, 8))
+    ax = fig.add_subplot(111)
+    ax.plot(x,y, label = "Melhor Tempo")
+    ax.plot(x,y2, label = "Melhor Tempo 2")
+    ax.legend(bbox_to_anchor=(1, 1),bbox_transform=plt.gcf().transFigure)
+    plt.ylabel(yl)
+    plt.xlabel(xl)
+    fig.savefig('graph2.png')
 
 
 
@@ -35,11 +45,7 @@ def bubble(v):
         if(changed==False):
             break
     return v
-   
-print()
-print("Testando com 20 números para ilustrar")
-print("-------------------")
-print()
+
 k=geraLista(20)
 print(k)
 print(bubble(k))
@@ -52,8 +58,15 @@ for i in range(4):
   listas.append(geraLista(x2[i]))
 
 for i in range(4):
-    y.append(timeit.timeit("bubble({})".format(listas[i]),setup="from __main__ import bubble",number=1)) 
-    y2.append(timeit.timeit("bubble({})".format(listas[i]),setup="from __main__ import bubble",number=1)) 
+  y.append(timeit.timeit("bubble({})".format(listas[i]),setup="from __main__ import bubble",number=1)) 
+  y2.append(timeit.timeit("bubble({})".format(listas[i]),setup="from __main__ import bubble",number=1)) 
 
-  
 desenhaGrafico(x2,y,y2)
+y=[]
+y2=[]
+
+for i in range(4):
+  y.append(timeit.timeit("bubble({})".format(listas[i]),setup="from __main__ import bubble",number=1)) 
+  y2.append(timeit.timeit("bubble({})".format(listas[i]),setup="from __main__ import bubble",number=1))
+
+desenhaGrafico2(x2,y2,y)
